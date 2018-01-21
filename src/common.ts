@@ -1,6 +1,6 @@
 export abstract class QueuedJobsBase<TData, TResult> {
+  public queue: Array<{ requestId: number, data: TData }> = []
   protected lastRequestId = 0
-  protected queue: Array<{ requestId: number, data: TData }> = []
   constructor (protected maxQueueLength = 50, protected timeout = 30000) { }
   public registerHandler (handleData: (data: TData) => Promise<TResult>) {
     let isBusy = false
@@ -43,7 +43,7 @@ export abstract class QueuedJobsBase<TData, TResult> {
 
       const rejectCallback = (error: Error) => {
         clearTimeout(timer)
-        this.removeEventListener(`reject:${requestId}`, resolveCallback)
+        this.removeEventListener(`reject:${requestId}`, rejectCallback)
         reject(error)
       }
       this.addEventListener(`reject:${requestId}`, rejectCallback)
