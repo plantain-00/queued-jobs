@@ -40,7 +40,7 @@ const queuedJobs = new QueuedJobs()
 
 // multiple workers
 for (let i = 0; i < 2; i++) {
-    queuedJobs.registerHandler(data => {
+    queuedJobs.registerHandler(async (data) => {
         // do heavy work
         return 'abc'
     })
