@@ -1,6 +1,6 @@
 {
   "name": "queued-jobs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A library to handle jobs in a smooth way with help of queue for nodejs and browser.",
   "main": "index.js",
   "repository": "https://github.com/plantain-00/queued-jobs.git",
