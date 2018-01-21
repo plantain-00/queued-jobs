@@ -54,5 +54,5 @@ const result = await queuedJobs.handle(data)
 ## options
 
 ```ts
-const queuedJobs = new QueuedJobs(50 /* max queue length */, 30000 /* timeout */)
+const queuedJobs = new QueuedJobs(50 /* max queue length */, 30000 /* timeout */, 100 /* max listeners */)
 ```

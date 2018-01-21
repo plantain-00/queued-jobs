@@ -1,10 +1,10 @@
 export abstract class QueuedJobsBase<TData, TResult> {
   public queue: Array<{ requestId: number, data: TData }> = []
   protected lastRequestId = 0
-  constructor (protected maxQueueLength = 50, protected timeout = 30000) { }
+  constructor (private maxQueueLength = 50, private timeout = 30000) { }
   public registerHandler (handleData: (data: TData) => Promise<TResult>) {
     let isBusy = false
-    this.addEventListener('new', async () => {
+    this.on('new', async () => {
       if (!isBusy) {
         isBusy = true
         let item = this.queue.shift()
@@ -31,22 +31,20 @@ export abstract class QueuedJobsBase<TData, TResult> {
         }
       }
       this.queue.push({ requestId, data })
+
       const timer = setTimeout(() => {
         reject(new Error('timeout'))
       }, this.timeout)
-      const resolveCallback = (result: TResult) => {
-        clearTimeout(timer)
-        this.removeEventListener(`resolve:${requestId}`, resolveCallback)
-        resolve(result)
-      }
-      this.addEventListener(`resolve:${requestId}`, resolveCallback)
 
-      const rejectCallback = (error: Error) => {
+      this.once(`resolve:${requestId}`, (result: TResult | Error) => {
         clearTimeout(timer)
-        this.removeEventListener(`reject:${requestId}`, rejectCallback)
-        reject(error)
-      }
-      this.addEventListener(`reject:${requestId}`, rejectCallback)
+        resolve(result as TResult)
+      })
+
+      this.once(`reject:${requestId}`, (error: Error | TResult) => {
+        clearTimeout(timer)
+        reject(error as Error)
+      })
 
       this.dispatchEvent('new')
     })
@@ -55,7 +53,7 @@ export abstract class QueuedJobsBase<TData, TResult> {
     this.lastRequestId = this.lastRequestId < 4294967295 ? this.lastRequestId + 1 : 1 // 4294967295 = 2^32 - 1
     return this.lastRequestId
   }
-  protected abstract dispatchEvent (eventName: string, data?: any): void
-  protected abstract addEventListener (eventName: string, callback: (data: any) => void): void
-  protected abstract removeEventListener (eventName: string, callback: (data: any) => void): void
+  protected abstract dispatchEvent (eventName: string, data?: TResult | Error): void
+  protected abstract once (eventName: string, callback: (data: TResult | Error) => void): void
+  protected abstract on (eventName: string, callback: () => void): void
 }

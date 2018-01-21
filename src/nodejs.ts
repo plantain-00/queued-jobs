@@ -8,13 +8,17 @@ class QueuedJobEmitter extends EventEmitter { }
  */
 export default class QueuedJobs<TData = any, TResult = any> extends QueuedJobsBase<TData, TResult> {
   private emitter = new QueuedJobEmitter()
-  protected dispatchEvent (eventName: string, data?: any) {
+  constructor (maxQueueLength = 50, timeout = 30000, maxListeners = 100) {
+    super(maxQueueLength, timeout)
+    this.emitter.setMaxListeners(maxListeners)
+  }
+  protected dispatchEvent (eventName: string, data?: TResult | Error) {
     this.emitter.emit(eventName, data)
   }
-  protected addEventListener (eventName: string, callback: (data: any) => void) {
-    this.emitter.addListener(eventName, callback)
+  protected once (eventName: string, callback: (data: TResult | Error) => void) {
+    this.emitter.once(eventName, callback)
   }
-  protected removeEventListener (eventName: string, callback: (data: any) => void) {
-    this.emitter.removeListener(eventName, callback)
+  protected on (eventName: string, callback: () => void) {
+    this.emitter.on(eventName, callback)
   }
 }
