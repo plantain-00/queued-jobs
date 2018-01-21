@@ -2,7 +2,7 @@ export abstract class QueuedJobsBase<TData, TResult> {
   protected lastRequestId = 0
   protected queue: Array<{ requestId: number, data: TData }> = []
   constructor (protected maxQueueLength = 50, protected timeout = 30000) { }
-  registerHandler (handleData: (data: TData) => Promise<TResult>) {
+  public registerHandler (handleData: (data: TData) => Promise<TResult>) {
     let isBusy = false
     this.addEventListener('new', async () => {
       if (!isBusy) {
@@ -21,7 +21,7 @@ export abstract class QueuedJobsBase<TData, TResult> {
       }
     })
   }
-  handle (data: TData) {
+  public handle (data: TData) {
     return new Promise<TResult>((resolve, reject) => {
       const requestId = this.generateRequestId()
       while (this.queue.length >= this.maxQueueLength) {
