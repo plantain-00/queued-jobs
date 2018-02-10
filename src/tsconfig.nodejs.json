@@ -1,11 +1,11 @@
 {
-    "extends": "./tsconfig.base.json",
-    "compilerOptions": {
-        "target": "esnext",
-        "outDir": "../dist/nodejs",
-        "newLine": "LF"
-    },
-    "files": [
-        "nodejs.ts"
-    ]
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "../dist/nodejs",
+    "declaration": true
+  },
+  "files": [
+    "nodejs.ts"
+  ]
 }
