@@ -1,8 +1,8 @@
 import QueuedJobs from '../dist/nodejs/nodejs'
 
-it('basic', async () => {
+it('basic', async() => {
   const queuedJobs = new QueuedJobs<string, string>()
-  queuedJobs.registerHandler(async (data) => {
+  queuedJobs.registerHandler(async(data) => {
     await sleep(100)
     return data + '-' + data
   })
@@ -10,9 +10,9 @@ it('basic', async () => {
   expect(result).toEqual('basic-basic')
 })
 
-it('error', async () => {
+it('error', async() => {
   const queuedJobs = new QueuedJobs<string, string>()
-  queuedJobs.registerHandler(async (data) => {
+  queuedJobs.registerHandler(async(data) => {
     await sleep(100)
     throw new Error(data + '-' + data)
   })
@@ -23,9 +23,9 @@ it('error', async () => {
   })
 })
 
-it('timeout', async () => {
+it('timeout', async() => {
   const queuedJobs = new QueuedJobs<string, string>(50, 1000)
-  queuedJobs.registerHandler(async (data) => {
+  queuedJobs.registerHandler(async(data) => {
     await sleep(2000)
     return data + '-' + data
   })
@@ -36,9 +36,9 @@ it('timeout', async () => {
   })
 })
 
-it('queue overflow', async () => {
+it('queue overflow', async() => {
   const queuedJobs = new QueuedJobs<string, string>(1)
-  queuedJobs.registerHandler(async (data) => {
+  queuedJobs.registerHandler(async(data) => {
     await sleep(1000)
     return data + '-' + data
   })
@@ -58,6 +58,6 @@ it('queue overflow', async () => {
   })
 })
 
-function sleep (ms: number) {
+function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }

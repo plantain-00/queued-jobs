@@ -1,10 +1,10 @@
 export abstract class QueuedJobsBase<TData, TResult> {
   public queue: Array<{ requestId: number, data: TData }> = []
   protected lastRequestId = 0
-  constructor (private maxQueueLength = 50, private timeout = 30000) { }
-  public registerHandler (handleData: (data: TData) => Promise<TResult>) {
+  constructor(private maxQueueLength = 50, private timeout = 30000) { }
+  public registerHandler(handleData: (data: TData) => Promise<TResult>) {
     let isBusy = false
-    this.on('new', async () => {
+    this.on('new', async() => {
       if (!isBusy) {
         isBusy = true
         let item = this.queue.shift()
@@ -21,7 +21,7 @@ export abstract class QueuedJobsBase<TData, TResult> {
       }
     })
   }
-  public handle (data: TData) {
+  public handle(data: TData) {
     return new Promise<TResult>((resolve, reject) => {
       const requestId = this.generateRequestId()
       while (this.queue.length >= this.maxQueueLength) {
@@ -49,11 +49,11 @@ export abstract class QueuedJobsBase<TData, TResult> {
       this.dispatchEvent('new')
     })
   }
-  protected generateRequestId () {
+  protected generateRequestId() {
     this.lastRequestId = this.lastRequestId < 4294967295 ? this.lastRequestId + 1 : 1 // 4294967295 = 2^32 - 1
     return this.lastRequestId
   }
-  protected abstract dispatchEvent (eventName: string, data?: TResult | Error): void
-  protected abstract once (eventName: string, callback: (data: TResult | Error) => void): void
-  protected abstract on (eventName: string, callback: () => void): void
+  protected abstract dispatchEvent(eventName: string, data?: TResult | Error): void
+  protected abstract once(eventName: string, callback: (data: TResult | Error) => void): void
+  protected abstract on(eventName: string, callback: () => void): void
 }
