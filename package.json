@@ -1,8 +1,12 @@
 {
   "name": "queued-jobs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A library to handle jobs in a smooth way with help of queue for nodejs and browser.",
   "main": "index.js",
+  "module": "index.js",
+  "unpkg": "queued-jobs.min.js",
+  "jsdelivr": "queued-jobs.min.js",
+  "types": "index.d.ts",
   "repository": "https://github.com/plantain-00/queued-jobs.git",
   "author": "york yao <yaoao12306@outlook.com>",
   "license": "MIT",
