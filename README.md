@@ -27,13 +27,7 @@ if queue's length > `maxQueueLength`, the front item will be removed and errored
 ## usage
 
 ```ts
-// nodejs:
-import QueuedJobs from "queued-jobs/nodejs/nodejs";
-
-// browser(module):
-import QueuedJobs from "queued-jobs/browser/browser";
-
-// browser(script tag):
+import QueuedJobs from "queued-jobs";
 // <script src="./node_modules/queued-jobs/queued-jobs.min.js"></script>
 
 // only one queue
