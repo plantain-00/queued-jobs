@@ -1,6 +1,6 @@
 {
   "name": "queued-jobs",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A library to handle jobs in a smooth way with help of queue for nodejs and browser.",
   "main": "nodejs/nodejs.js",
   "module": "browser/browser.js",
