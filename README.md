@@ -9,6 +9,7 @@ A library to handle jobs in a smooth way with help of queue for nodejs and brows
 [![npm version](https://badge.fury.io/js/queued-jobs.svg)](https://badge.fury.io/js/queued-jobs)
 [![Downloads](https://img.shields.io/npm/dm/queued-jobs.svg)](https://www.npmjs.com/package/queued-jobs)
 [![gzip size](https://img.badgesize.io/https://unpkg.com/queued-jobs?compression=gzip)](https://unpkg.com/queued-jobs)
+[![type-coverage](https://img.shields.io/badge/dynamic/json.svg?label=type-coverage&prefix=%E2%89%A5&suffix=%&query=$.typeCoverage.atLeast&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fplantain-00%2Fqueued-jobs%2Fmaster%2Fpackage.json)](https://github.com/plantain-00/queued-jobs)
 
 ## scene
 

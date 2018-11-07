@@ -10,6 +10,9 @@
   "repository": "https://github.com/plantain-00/queued-jobs.git",
   "author": "york yao <yaoao12306@outlook.com>",
   "license": "MIT",
+  "typeCoverage": {
+    "atLeast": 98
+  },
   "devDependencies": {
     "@commitlint/cli": "7.2.1",
     "@commitlint/config-conventional": "7.1.2",
@@ -27,7 +30,7 @@
     "tslint": "5.11.0",
     "tslint-config-standard": "8.0.1",
     "tslint-sonarts": "1.8.0",
-    "type-coverage": "1.4.1",
+    "type-coverage": "1.4.5",
     "typescript": "3.1.6"
   },
   "scripts": {
