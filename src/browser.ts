@@ -10,14 +10,14 @@ export default class QueuedJobs<TData = any, TResult = any> extends QueuedJobsBa
     this.eventTarget.dispatchEvent(event)
   }
   protected once(eventName: string, callback: (data: TResult | Error) => void) {
-    const eventListenerCallback = (data: CustomEventInit) => {
+    const eventListenerCallback = (data: CustomEventInit<TResult>) => {
       this.eventTarget.removeEventListener(eventName, eventListenerCallback)
       callback(data.detail)
     }
     this.eventTarget.addEventListener(eventName, eventListenerCallback)
   }
   protected on(eventName: string, callback: () => void) {
-    this.eventTarget.addEventListener(eventName, (data: CustomEventInit) => {
+    this.eventTarget.addEventListener(eventName, (data: CustomEventInit<TResult>) => {
       callback()
     })
   }
