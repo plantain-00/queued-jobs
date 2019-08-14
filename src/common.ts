@@ -1,5 +1,5 @@
 export abstract class QueuedJobsBase<TData, TResult> {
-  public queue: Array<{ requestId: number, data: TData }> = []
+  public queue: { requestId: number, data: TData }[] = []
   protected lastRequestId = 0
   constructor(private maxQueueLength = 50, private timeout = 30000) { }
   public registerHandler(handleData: (data: TData) => Promise<TResult>) {
