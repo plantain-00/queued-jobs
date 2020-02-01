@@ -1,4 +1,4 @@
-import EventEmitter from 'events'
+import { EventEmitter } from 'events'
 import { QueuedJobsBase } from './common'
 
 class QueuedJobEmitter extends EventEmitter { }
