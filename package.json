@@ -19,6 +19,7 @@
     "@typescript-eslint/eslint-plugin": "3.8.0",
     "@typescript-eslint/parser": "3.8.0",
     "ava": "3.11.1",
+    "clean-release": "2.14.0",
     "clean-scripts": "1.17.0",
     "eslint": "7.6.0",
     "eslint-config-prettier": "6.11.0",
@@ -37,6 +38,10 @@
     "build": "clean-scripts build",
     "lint": "clean-scripts lint",
     "test": "clean-scripts test",
-    "fix": "clean-scripts fix"
+    "fix": "clean-scripts fix",
+    "release": "clean-release"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
