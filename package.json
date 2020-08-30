@@ -10,7 +10,7 @@
   "author": "york yao <yaoao12306@outlook.com>",
   "license": "MIT",
   "typeCoverage": {
-    "atLeast": 98.36
+    "atLeast": 98.46
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.9.11",

@@ -18,8 +18,8 @@ export default {
     ts: `eslint --ext .js,.ts,.tsx ${tsFiles}`,
     export: `no-unused-export ${tsFiles}`,
     markdown: `markdownlint README.md`,
-    typeCoverage: 'type-coverage -p src/tsconfig.nodejs.json --strict --ignore-catch',
-    typeCoverageBrowser: 'type-coverage -p src/tsconfig.browser.json --strict --ignore-catch'
+    typeCoverage: 'type-coverage -p src/tsconfig.nodejs.json --strict',
+    typeCoverageBrowser: 'type-coverage -p src/tsconfig.browser.json --strict'
   },
   test: [
     'ava'

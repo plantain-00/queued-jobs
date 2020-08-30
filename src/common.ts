@@ -12,8 +12,8 @@ export abstract class QueuedJobsBase<TData, TResult> {
           try {
             const result = await handleData(item.data)
             this.dispatchEvent(`resolve:${item.requestId}`, result)
-          } catch (error) {
-            this.dispatchEvent(`reject:${item.requestId}`, error)
+          } catch (error: unknown) {
+            this.dispatchEvent(`reject:${item.requestId}`, error instanceof Error ? error : new Error(String(error)))
           }
           item = this.queue.shift()
         }
