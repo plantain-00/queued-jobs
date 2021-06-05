@@ -4,7 +4,6 @@ A library to handle jobs in a smooth way with help of queue for nodejs and brows
 
 [![Dependency Status](https://david-dm.org/plantain-00/queued-jobs.svg)](https://david-dm.org/plantain-00/queued-jobs)
 [![devDependency Status](https://david-dm.org/plantain-00/queued-jobs/dev-status.svg)](https://david-dm.org/plantain-00/queued-jobs#info=devDependencies)
-[![Build Status: Linux](https://travis-ci.org/plantain-00/queued-jobs.svg?branch=master)](https://travis-ci.org/plantain-00/queued-jobs)
 [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/github/plantain-00/queued-jobs?branch=master&svg=true)](https://ci.appveyor.com/project/plantain-00/queued-jobs/branch/master)
 ![Github CI](https://github.com/plantain-00/queued-jobs/workflows/Github%20CI/badge.svg)
 [![npm version](https://badge.fury.io/js/queued-jobs.svg)](https://badge.fury.io/js/queued-jobs)
